@@ -45,7 +45,7 @@ def get_data(client, write_api):
             dt_object = datetime.datetime.strptime(dt_string, format)
 
             point = Point("SpotPrice")\
-                .tag("Region", "s3")\
+                .tag("Region", "se3")\
                 .field("price", price)\
                 .time(dt_object, WritePrecision.S)
 
