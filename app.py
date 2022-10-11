@@ -7,13 +7,13 @@ import os
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
-token = os.getenv("TOKEN")
-org = os.getenv("ORG")
-bucket = os.getenv("BUCKET")
+token = os.environ("TOKEN")
+org = os.environ("ORG")
+bucket = os.environ("BUCKET")
 
 
 def connect_to_influxdb():
