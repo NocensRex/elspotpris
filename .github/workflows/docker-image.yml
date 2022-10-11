@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      env:
+        BUCKET: ${{ secrets.BUCKET }}
+        ORG: ${{ secrets.ORG }}
+        TOKEN: ${{ secrets.TOKEN }}
+        URL: ${{ secrets.URL }}
+      run: docker build . --file Dockerfile --tag spot-price-updater:$(date +%s)
