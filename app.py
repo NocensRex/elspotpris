@@ -11,13 +11,14 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 
 # load_dotenv()
 
-token = os.environ("TOKEN")
-org = os.environ("ORG")
-bucket = os.environ("BUCKET")
+token = os.environ.get("TOKEN")
+org = os.environ.get("ORG")
+bucket = os.environ.get("BUCKET")
+url = os.environ.get("URL")
 
 
 def connect_to_influxdb():
-    client = InfluxDBClient(url=os.getenv("URL"), token=token)
+    client = InfluxDBClient(url=url, token=token)
     write_api = client.write_api(write_options=SYNCHRONOUS)
     return client, write_api
 
